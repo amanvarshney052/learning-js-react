@@ -1,0 +1,24 @@
+Module	Topic	Main Goal
+0	JavaScript Setup & Developer Workflow -	Get comfortable with JS environment
+1	Variables, Data Types & Operators -	Write basic JS confidently
+2	Conditions & Loops - Build application logic
+3	Functions -	Understand reusable logic
+4	Arrays -	Manipulate application data
+5	Objects-	Work with API/JSON data
+6	Modern JavaScript / ES6+ -	Write modern React-style JS
+7	Destructuring, Spread & Rest-	Master React data patterns
+8	DOM & Browser APIs-	Understand what React abstracts
+9	Events & Forms-	Handle user interaction
+10	Scope & Closures-	Understand advanced JS behavior
+11	this, Call, Apply & Bind-	Understand JS object/function behavior
+12	Async JavaScript-	Master asynchronous programming
+13	Promises & Async/Await-	Work with APIs
+14	Fetch API & REST APIs-	Connect frontend with backend
+15	Error Handling & Debugging-	Build reliable applications
+16	Modules & Code Organization	-Structure real projects
+17	JavaScript for React-	Direct preparation for React
+18	Advanced JavaScript-	Deep concepts used in React
+19	Performance & Optimization-	Write efficient frontend code
+20	Security & Browser Concepts-	Build safer applications
+21	Full-Stack JavaScript Integration-	React + Spring Boot
+22	Final Projects-	Apply everything

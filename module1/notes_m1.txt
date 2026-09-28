@@ -1,0 +1,919 @@
+1.1 Variables — The Foundation
+
+A variable is simply a name that refers to a value.
+
+For example:
+
+const name = "Aman";
+
+Think of it as:
+
+name
+  ↓
+"Aman"
+
+Another example:
+
+const age = 21;
+age
+ ↓
+21
+
+You'll use variables everywhere in React:
+
+const username = "Aman";
+const isLoggedIn = true;
+const productPrice = 4999;
+1.2 let vs const
+
+Modern JavaScript primarily uses:
+
+let
+const
+
+Avoid using var in modern application code unless you specifically need to understand legacy JavaScript.
+
+const
+
+Use const when you don't plan to reassign the variable.
+
+const name = "Aman";
+const age = 21;
+
+This is valid:
+
+const name = "Aman";
+
+console.log(name);
+
+But this is not:
+
+const name = "Aman";
+
+name = "Rahul";
+
+You cannot reassign a const variable.
+
+1.3 let
+
+Use let when the variable needs to be reassigned.
+
+let age = 21;
+
+age = 22;
+
+console.log(age);
+
+Output:
+
+22
+
+Another example:
+
+let score = 0;
+
+score = 10;
+score = 20;
+score = 30;
+
+Here let makes sense because the value changes.
+
+1.4 Practical Rule
+
+For modern JavaScript:
+
+Start with const. Use let only when you actually need reassignment.
+
+For example:
+
+const name = "Aman";
+const college = "ABC College";
+
+let score = 0;
+
+score = 90;
+
+This is a good habit.
+
+1.5 Why This Matters in React
+
+You'll frequently write:
+
+const user = {
+    name: "Aman"
+};
+
+and:
+
+const products = [];
+
+You'll also see:
+
+const [count, setCount] = useState(0);
+
+Don't worry about useState() yet.
+
+The important thing is to become comfortable with const.
+
+1.6 var — Know It, Don't Prefer It
+
+Older JavaScript code may contain:
+
+var name = "Aman";
+
+You'll encounter it in interviews and older codebases.
+
+For now, remember:
+
+var  → older JavaScript
+let  → value can be reassigned
+const → variable cannot be reassigned
+
+Later we'll discuss the deeper differences involving scope and hoisting.
+
+1.7 Data Types
+
+JavaScript has different types of values.
+
+The important ones for React/full-stack development are:
+
+String
+Number
+Boolean
+Undefined
+Null
+Object
+Array
+
+There are also:
+
+BigInt
+Symbol
+
+which we'll discuss later.
+
+1.8 String
+
+A string represents text.
+
+const name = "Aman";
+
+You can use:
+
+"Aman"
+
+or:
+
+'Aman'
+
+Modern applications commonly use double or single quotes consistently according to the project's style.
+
+Example:
+
+const city = "Delhi";
+const course = "BTech CSE";
+1.9 Template Literals
+
+This is extremely useful.
+
+Instead of:
+
+const name = "Aman";
+
+console.log("Hello " + name);
+
+you can write:
+
+const name = "Aman";
+
+console.log(`Hello ${name}`);
+
+Output:
+
+Hello Aman
+
+The syntax is:
+
+`text ${variable}`
+Multiple Variables
+const name = "Aman";
+const age = 21;
+
+console.log(`My name is ${name} and I am ${age} years old.`);
+
+Output:
+
+My name is Aman and I am 21 years old.
+React Connection
+
+You'll use this when constructing messages:
+
+const message = `Welcome ${user.name}`;
+
+and URLs:
+
+const url = `/users/${userId}`;
+1.10 Numbers
+
+JavaScript uses the number type for normal numeric values.
+
+const age = 21;
+const price = 4999;
+const percentage = 85.5;
+
+You can perform calculations:
+
+const price = 1000;
+const quantity = 3;
+
+const total = price * quantity;
+
+console.log(total);
+
+Output:
+
+3000
+1.11 Boolean
+
+A Boolean has only two values:
+
+true
+false
+
+Example:
+
+const isLoggedIn = true;
+const isAdmin = false;
+
+This becomes incredibly important in React.
+
+For example:
+
+const isLoggedIn = true;
+
+Then later:
+
+if (isLoggedIn) {
+    // show dashboard
+}
+
+Or React:
+
+{isLoggedIn && <Dashboard />}
+
+We'll study this properly later.
+
+1.12 Undefined
+
+undefined generally means a value hasn't been assigned.
+
+let username;
+
+console.log(username);
+
+Output:
+
+undefined
+
+The variable exists, but it doesn't currently contain a value.
+
+1.13 Null
+
+null is intentionally assigned to represent no value.
+
+const selectedUser = null;
+
+This can mean:
+
+No user is currently selected.
+
+A common application example:
+
+let currentUser = null;
+
+After login:
+
+currentUser = {
+    id: 101,
+    name: "Aman"
+};
+1.14 undefined vs null
+
+Remember this practical distinction:
+
+undefined
+    ↓
+No value has been assigned / value is absent
+
+null
+    ↓
+Developer intentionally says "there is no value"
+
+Example:
+
+let username;
+
+console.log(username);
+// undefined
+
+versus:
+
+let selectedUser = null;
+
+console.log(selectedUser);
+// null
+1.15 Checking Data Types
+
+JavaScript provides:
+
+typeof
+
+Example:
+
+const name = "Aman";
+
+console.log(typeof name);
+
+Output:
+
+string
+
+Try:
+
+console.log(typeof 21);
+
+Output:
+
+number
+
+And:
+
+console.log(typeof true);
+
+Output:
+
+boolean
+1.16 Important typeof Examples
+
+Try this:
+
+console.log(typeof "Hello");
+console.log(typeof 100);
+console.log(typeof true);
+console.log(typeof undefined);
+console.log(typeof {});
+console.log(typeof []);
+
+You'll notice something interesting:
+
+typeof []
+
+returns:
+
+object
+
+Arrays are technically objects in JavaScript.
+
+We'll study arrays properly in Module 4.
+
+1.17 Operators
+
+Operators allow us to perform operations on values.
+
+Main categories:
+
+Arithmetic
+Assignment
+Comparison
+Logical
+1.18 Arithmetic Operators
+Addition
+const result = 10 + 5;
+
+Result:
+
+15
+Subtraction
+const result = 10 - 5;
+
+Result:
+
+5
+Multiplication
+const result = 10 * 5;
+
+Result:
+
+50
+Division
+const result = 10 / 5;
+
+Result:
+
+2
+Modulus %
+
+This gives the remainder.
+
+console.log(10 % 3);
+
+Output:
+
+1
+
+Because:
+
+10 ÷ 3
+
+quotient = 3
+remainder = 1
+
+This is very useful for checking even/odd numbers:
+
+const number = 10;
+
+console.log(number % 2);
+
+If:
+
+number % 2 === 0
+
+the number is even.
+
+1.19 Exponentiation
+console.log(2 ** 3);
+
+Output:
+
+8
+
+Because:
+
+2 × 2 × 2 = 8
+1.20 Assignment Operators
+
+Basic:
+
+let score = 10;
+
+Then:
+
+score = 20;
+
+You can also use:
+
+score += 5;
+
+Equivalent to:
+
+score = score + 5;
+
+Similarly:
+
+score -= 5;
+score *= 2;
+score /= 2;
+
+Example:
+
+let score = 10;
+
+score += 5;
+
+console.log(score);
+
+Output:
+
+15
+1.21 Increment and Decrement
+
+You will frequently see:
+
+count++;
+
+which means:
+
+count = count + 1;
+
+Example:
+
+let count = 0;
+
+count++;
+count++;
+count++;
+
+console.log(count);
+
+Output:
+
+3
+
+Similarly:
+
+count--;
+
+decreases by 1.
+
+1.22 Comparison Operators
+
+Comparison operators produce:
+
+true
+
+or:
+
+false
+
+Examples:
+
+console.log(10 > 5);
+true
+console.log(10 < 5);
+false
+
+Other operators:
+
+>
+<
+>=
+<=
+==
+===
+!=
+!==
+1.23 The Most Important One: ===
+
+Suppose:
+
+console.log(10 === 10);
+
+Result:
+
+true
+
+But:
+
+console.log(10 === "10");
+
+Result:
+
+false
+
+Why?
+
+Because:
+
+10       → number
+"10"     → string
+
+=== checks both:
+
+value
++
+type
+1.24 == vs ===
+
+This is a common interview question.
+
+Consider:
+
+10 == "10"
+
+JavaScript may convert the values before comparison.
+
+Result:
+
+true
+
+But:
+
+10 === "10"
+
+Result:
+
+false
+
+because the types differ.
+
+Practical Rule
+
+Prefer:
+
+===
+
+and:
+
+!==
+
+in modern JavaScript application code.
+
+1.25 Logical Operators
+
+Three important operators:
+
+&&
+||
+!
+AND — &&
+
+Both conditions must be true.
+
+const age = 21;
+const hasId = true;
+
+console.log(age >= 18 && hasId);
+
+Result:
+
+true
+
+Because:
+
+age >= 18 → true
+hasId     → true
+1.26 OR — ||
+
+At least one condition must be true.
+
+const isAdmin = false;
+const isManager = true;
+
+console.log(isAdmin || isManager);
+
+Result:
+
+true
+1.27 NOT — !
+
+It reverses a Boolean.
+
+const isLoggedIn = true;
+
+console.log(!isLoggedIn);
+
+Result:
+
+false
+
+Another:
+
+const isAdmin = false;
+
+console.log(!isAdmin);
+
+Result:
+
+true
+1.28 Real Application Example
+
+Suppose an online banking application requires:
+
+Age >= 18
+AND
+Account is active
+
+JavaScript:
+
+const age = 25;
+const accountActive = true;
+
+const canAccess = age >= 18 && accountActive;
+
+console.log(canAccess);
+
+This produces:
+
+true
+
+This same kind of logic will later be used in React for UI conditions.
+
+1.29 Practical Example — Shopping Cart
+
+Suppose:
+
+const price = 1000;
+const quantity = 3;
+
+Calculate:
+
+const total = price * quantity;
+
+console.log(total);
+
+Output:
+
+3000
+
+Now apply 10% discount:
+
+const discount = total * 0.10;
+
+const finalPrice = total - discount;
+
+console.log(finalPrice);
+
+Output:
+
+2700
+1.30 Add GST
+
+Suppose GST is 18%.
+
+const gst = finalPrice * 0.18;
+
+const amountToPay = finalPrice + gst;
+
+console.log(amountToPay);
+
+Complete calculation:
+
+const price = 1000;
+const quantity = 3;
+
+const total = price * quantity;
+
+const discount = total * 0.10;
+
+const discountedPrice = total - discount;
+
+const gst = discountedPrice * 0.18;
+
+const finalPrice = discountedPrice + gst;
+
+console.log(`Final price: ₹${finalPrice}`);
+
+This is the type of practical JavaScript we'll continue building.
+
+1.31 A Very Important Concept — Truthy and Falsy
+
+JavaScript doesn't always require an explicit Boolean.
+
+Some values behave like false.
+
+Common falsy values:
+
+false
+0
+""
+null
+undefined
+NaN
+
+Most other values are truthy.
+
+Example:
+
+const username = "";
+
+if (username) {
+    console.log("Username exists");
+}
+
+Nothing is printed because:
+
+"" → falsy
+
+But:
+
+const username = "Aman";
+
+if (username) {
+    console.log("Username exists");
+}
+
+prints:
+
+Username exists
+
+This becomes very useful in React.
+
+1.32 React Connection — Conditional Rendering
+
+Suppose:
+
+const isLoggedIn = true;
+
+In React you'll eventually write:
+
+{isLoggedIn && <Dashboard />}
+
+Conceptually:
+
+isLoggedIn
+    ↓
+true
+    ↓
+render Dashboard
+
+If:
+
+const isLoggedIn = false;
+
+then:
+
+false
+    ↓
+Dashboard isn't rendered
+
+This is why understanding Boolean logic is important before learning React.
+
+1.33 Short-Circuiting — First Look
+
+This:
+
+const username = null;
+
+const name = username || "Guest";
+
+console.log(name);
+
+produces:
+
+Guest
+
+Because username is falsy.
+
+Another example:
+
+const isLoggedIn = true;
+
+isLoggedIn && console.log("Welcome!");
+
+Output:
+
+Welcome!
+
+We'll study short-circuiting more deeply later.
+
+1.34 Practical Example — User Profile
+
+Consider:
+
+const user = {
+    name: "Aman",
+    age: 21,
+    isLoggedIn: true,
+    isAdmin: false
+};
+
+Now:
+
+console.log(user.name);
+console.log(user.age);
+console.log(user.isLoggedIn);
+console.log(user.isAdmin);
+
+Check access:
+
+const canAccessDashboard = user.isLoggedIn;
+
+console.log(canAccessDashboard);
+
+Check admin:
+
+const canAccessAdminPanel =
+    user.isLoggedIn && user.isAdmin;
+
+console.log(canAccessAdminPanel);
+
+Output:
+
+false
+
+because:
+
+true && false
+
+is:
+
+false
+1.35 Practical Full-Stack Example
+
+Imagine your Spring Boot API returns:
+
+{
+    "id": 101,
+    "name": "Aman",
+    "role": "USER",
+    "active": true
+}
+
+Your JavaScript can process it:
+
+const user = {
+    id: 101,
+    name: "Aman",
+    role: "USER",
+    active: true
+};
+
+const canLogin = user.active;
+
+const isAdmin = user.role === "ADMIN";
+
+console.log(`User: ${user.name}`);
+console.log(`Can Login: ${canLogin}`);
+console.log(`Is Admin: ${isAdmin}`);
+
+This is exactly the kind of data handling you'll do when React communicates with Spring Boot.
